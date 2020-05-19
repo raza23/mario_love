@@ -7,16 +7,15 @@ VIRTUAL_HEIGHT = 243
 Class = require 'class'
 push = require 'push'
 
+love.graphics.setDefaultFilter('nearest','nearest')
 require 'Util'
 require 'Map'
 
 function love.load()
     map = Map()
 
-    love.graphics.setDefaultFilter('nearest','nearest')
-    push:setupScreen(VIRTUAL_WIDTH,VIRTUAL_HEIGHT,WINDOW_WIDTH,WINDOW_HEIGHT,{
-        fullscreen = false, 
-        vsync = true,
+    push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
+        fullscreen = false,
         resizable = true
     })
 end
