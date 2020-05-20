@@ -40,12 +40,6 @@ function Map:init()
     self.mapWidthPixels = self.mapWidth * self.tileWidth
     self.mapHeightPixels = self.mapHeight * self.tileHeight
 
-    -- for y = self.mapHeight/2,self.mapHeight do 
-    --     for x = 1, self.mapWidth do 
-    --         self:setTile(x,y,TILE_BRICK)
-    --     end
-    -- end
-    -- filling map with empty tiles
     for y = 1, self.mapHeight do 
         for x = 1, self.mapWidth do 
             self:setTile(x,y,TILE_EMPTY)
@@ -119,19 +113,22 @@ function Map:setTile(x,y,tile)
 end
 
 function Map:update(dt)
-    if love.keyboard.isDown('w') then
-        self.camY = math.max(0,math.floor(self.camY + (-SCROLL_SPEED * dt)))
+    -- if love.keyboard.isDown('w') then
+    --     self.camY = math.max(0,math.floor(self.camY + (-SCROLL_SPEED * dt)))
 
-    elseif love.keyboard.isDown('a') then
-        self.camX = math.max(0,math.floor(self.camX + (-SCROLL_SPEED * dt)))
+    -- elseif love.keyboard.isDown('a') then
+    --     self.camX = math.max(0,math.floor(self.camX + (-SCROLL_SPEED * dt)))
     
-    elseif love.keyboard.isDown('s') then
-        self.camY = math.min(self.mapHeightPixels - VIRTUAL_HEIGHT,math.floor(self.camY + (SCROLL_SPEED * dt)))
+    -- elseif love.keyboard.isDown('s') then
+    --     self.camY = math.min(self.mapHeightPixels - VIRTUAL_HEIGHT,math.floor(self.camY + (SCROLL_SPEED * dt)))
     
-    elseif love.keyboard.isDown('d') then
-        self.camX = math.min(self.mapWidthPixels-VIRTUAL_WIDTH,math.floor(self.camX + (SCROLL_SPEED * dt)))
+    -- elseif love.keyboard.isDown('d') then
+    --     self.camX = math.min(self.mapWidthPixels-VIRTUAL_WIDTH,math.floor(self.camX + (SCROLL_SPEED * dt)))
 
-    end
+    -- end
+
+    self.camX = math.max(0,math.min(self.player.x - VIRTUAL_WIDTH /2, 
+    math.min(self.mapWidthPixels-VIRTUAL_WIDTH,self.player.x)))
 
     self.player:update(dt)
 
