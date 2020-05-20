@@ -12,6 +12,7 @@ require 'Util'
 require 'Map'
 
 function love.load()
+    math.randomseed(os.time())
     map = Map()
 
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
